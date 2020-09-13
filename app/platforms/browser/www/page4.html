@@ -1,0 +1,58 @@
+<!Doctype>
+<html>
+<head>
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" type="text/css" href="./css/page4_style.css">
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="./js/admob_simple.js"></script>
+    <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        StatusBar.backgroundColorByHexString('#53538a');
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+    function onBackKeyDown() 
+    {
+        window.location.href = "page0.html";
+    }
+    </script>
+</head>
+<body style="font-family: segoe ui">
+    <div class="loader">
+        <div align="center" id="main_interface" class="main_interface" style="overflow: auto">
+            <div style="padding: 30px 0px 30px 0px; position:fixed; color: white; background-color: #685c91; top:0; left:0; right: 0; width:100%; font-size: 4vw;">
+                <a style="font-size: 6vw;">Disclaimers</a><br>
+            </div>
+            <div align="left" style="padding-left:15px;padding-bottom:400px;margin:8vh auto; color:gray;font-size:4vw;overflow:auto;" >
+                <hr><br>
+                <button class="val_point"><u>CGPI</u></button><a class="grade_data"> : <u>Grade</u></a><br><br>
+                <button class="val_point">10</button><a class="grade_data"> : (O) Outstanding</a><br><br>
+                <button class="val_point">9</button><a class="grade_data"> : (A) Excellent</a><br><br>
+                <button class="val_point">8</button><a class="grade_data"> : (B) Very Good</a><br><br>
+                <button class="val_point">7</button><a class="grade_data"> : (C) Good</a><br><br>
+                <button class="val_point">6</button><a class="grade_data"> : (D) Fair</a><br><br>
+                <button class="val_point">5</button><a class="grade_data"> : (E) Average</a><br><br>
+                <button class="val_point">4</button><a class="grade_data"> : (P) Pass</a><br><br>
+                <button class="val_point">0</button><a class="grade_data"> : (F) Fail</a><br><br>
+                <hr>
+                <p>⇒ <b>If CGPI is less than 7 :</b> <br>Percentage = (CGPI * 7.1) + 12</p>
+                <p>⇒ <b>If CGPI is greater than 7 :</b> <br>Percentage = (CGPI * 7.4) + 12</p>
+                <p>⇒ <b>CGPI :</b><br><u>(Sum of SGPI's of all Semesters)</u><br>(Total Number of Semesters)</p>
+                <hr>
+                <p><b>Note:</b></p> 
+                <p style="font-size:3vw;"> - Mumbai University follows<br> CGPI system and not GPA system.</p>
+                <p style="font-size:3vw;"> - GPA calculation formula adapted :<br> (CGPI * 10)/4</p>
+                <p style="font-size:3vw;"> - GPA must be used for personal <br>reference only.</p>
+            </div>
+        </div>
+        <div align="center" style="padding:20px 0px 20px 0px;background-color: #685c91;width:100%;left: 0; right: 0; bottom: 0; position: fixed;" onclick="window.location.href = 'page0.html'">
+            <img style="height:4vh;filter: invert(1);" src="./img/home.png">
+        </div>
+    </div>
+<script>
+
+function get_(id_) {return document.getElementById(id_);}
+
+</script>
+</body>
+</html>

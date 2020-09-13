@@ -1,0 +1,201 @@
+body {
+  user-select: none;
+  left: 0;
+  right: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.tab_bar {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  float: left;
+  margin-top: -5px;
+  padding-left: 10px;
+}
+
+.main_header{
+  display: block;
+  top: 0;
+  left:0;
+  right:0;
+  background-color: rgb(0,0,80,0.6);
+  box-shadow: 0 0 30px #767676;
+  position: fixed;
+}
+
+#CGPA_MU {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  margin-left: -2vw;
+}
+
+.inward {
+  margin-top: 8vh;
+  width: 100%;
+}
+
+.get_cgpa {
+  background-color: rgb(0,0,80,0.6);
+  color: white;
+  display: inline-block;
+  padding: 20px;
+  font-size: 4vw;
+  outline: none;
+  width:28%;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 0 12px #767676;
+}
+
+.get_cgpa:active {transition:.1s;background-color: rgb(0,0,0,0.9);}
+
+.CGPA {
+  user-select: unset;
+  background-color: transparent;
+  color: black;
+  outline: none;
+  width: 30%;
+  font-size: 8vw;
+  border-bottom-width: 2px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  margin: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+  box-shadow: 0 10px 5px -5px lightblue;
+  border-bottom-color: rgb(100,30,40,0.5);
+}
+
+.CGPA:focus {
+  transition: 1s;
+  border-bottom-color: #0012FF;
+}
+
+.target_ {
+  font-size: 4vw;
+}
+
+.Status {
+  display: flex;
+  font-size: 4vw;
+  color: black;
+  width: 100%;
+}
+
+.Status div {
+  flex: 1;
+}
+
+.Status a {
+  color: gray;
+}
+
+.Status span {
+  font-size: 4vw;
+}
+
+.CGPA::-webkit-input-placeholder{
+  font-size: 5vw;
+  color: gray;
+}
+
+.CGPA:focus::-webkit-input-placeholder {
+  transition: .6s; 
+  text-indent: 400px;
+  opacity: 1;
+}
+
+.try_again {
+  font-size: 8vw;
+  background-color: transparent;
+  border-radius: 50%;
+  text-decoration: unset;
+  color: gray;
+  outline: none;
+  border: none;
+  padding:5px;
+  width: 30%;
+}
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sidenav a {
+  display: inline-block;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  text-align: left;
+  width:88%;
+  margin-top:1vh;
+  border: 1px solid purple;
+}
+
+.sidenav img {
+  padding-top: 30px;
+}
+
+.sidenav .nav_header {
+  background-color: rgb(0,0,80,0.6);
+  padding-bottom: 30px;
+}
+
+.sidenav #touchward {
+  box-shadow: 0 0 5px ;
+  width: 70%;
+  background-color: white;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.footerfeed {
+  display: flex;
+  position: absolute;
+  width: 70%;
+  bottom: 0;
+  box-shadow: 0 0 5px gray;
+}
+
+.footerfeed button {
+  flex: 1;
+  text-align: center;
+  font-size: 3vw;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-bottom: 10px;
+  padding-top: -30px;
+  margin-top: -2vh;
+}
+
+.add_value {
+  margin-top: 2vh;
+}
+
+.inward {
+  margin-top: 12vh;
+  animation-name: loader;
+  animation-duration: .5s;
+  animation-iteration-count: none;
+}
+
+@keyframes loader {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}

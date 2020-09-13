@@ -1,0 +1,13 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "MUPal",
+  "short_name": "MUPal",
+  "version": "com.mupal.app",
+  "description": "An Android application to calculate CGPA, GPA, Percentage of a student, according to Mumbai University rules and regulations.",
+  "author": "frankobase",
+  "icons": [],
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#53538a"
+}

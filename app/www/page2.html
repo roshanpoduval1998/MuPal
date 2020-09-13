@@ -1,0 +1,201 @@
+<!Doctype>
+<html>
+<head>
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" type="text/css" href="./css/page2_style.css">
+    <script src="cordova.js"></script>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="./js/hammer.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/admob_simple.js"></script>
+</head>
+<body style="font-family: segoe ui">
+    <div align="center" id="GPA_MU">
+        <div class="main_header_"><br>
+            <button style="text-decoration: none; font-size: 6vw" class="tab_bar" id="tab_bar" onclick="open_nav()">&#9776;</button>
+            <button style="color: white; font-size: 5vw; background-color: transparent; outline:none; border: none;margin-left: -30px">CGPI to GPA</button><br><br>
+        </div><br>
+        <div class="anim" style="margin:12vh auto;">
+            <div class="Status">
+                <div>
+                    <a><b>GPA</b><br></a>
+                    <span id="GPA_status">-</span>
+                </div>
+                <div>
+                    <a><b>Grade</b><br></a>
+                    <span id="Grade_status">-</span>
+                </div>
+            </div>
+            <div class="add_value" id="add_value">
+                <input type="number" class="GPA" id="total_CGPA" placeholder="Enter CGPI" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" onkeypress="return enter_key(event)">
+            </div>
+            <div>
+                <a class="try_again" id="try_again_GPA" href="page2.html" hidden>&#x21bb;</a><br><br>
+            </div>
+        </div>
+    </div>
+    <div class="sidenav" id="sidenav">
+        <div align="center" id="touchward">
+            <div class="nav_header" style="box-shadow: 0 0 5px black;">
+                <img src="./img/mdpi.png" alt="logo" style="width: 60px;height:60px;"><br>
+                <span style="font-size: 4vw;color:white">MUPal</span>
+            </div>
+            <div id="nav_" style="margin-top: 4vh;overflow: auto">
+                <a href="page0.html">Home</a><br>
+                <a href="page1.html">SGPI to CGPI</a><br>
+                <a style="background-color: gray;color: white" href="page2.html">CGPI to GPA</a><br>
+                <a href="page3.html">CGPI to %</a><br>
+                <a onclick="exit()">Exit</a><br>
+            </div>
+        </div>
+        <div class="footerfeed">
+            <button onclick="window.location.href = 'page4.html'"><img style="width: 6vw;height: 3vh" src="./img/info.png"><br><br>Disclaimers</button>
+            <button onclick="window.location.href = 'https://play.google.com/store/apps/details?id=com.mupal.app'"><img style="width: 6vw;height: 3vh" src="./img/star.png"><br><br>Rate</button>
+            <button onclick="window.location.href = 'mailto:frankobase98@gmail.com?subject=Feedback&body='"><img style="width: 6vw;height: 3vh" src="./img/feedback.png"><br><br>Feedback</button>
+        </div>
+    </div>
+<script>
+    
+function exit() {
+    navigator.app.exitApp();
+}
+
+function get_(id_) {return document.getElementById(id_);}
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    StatusBar.backgroundColorByHexString('#53538a');
+    document.addEventListener("backbutton", onBackKeyDown, false);
+}
+function onBackKeyDown() 
+{
+    var data = document.getElementById('sidenav').offsetLeft;
+    if (data == '0') {
+        $(swipe_).animate({left: "-100%"}, 300);
+        blue.style.opacity = "1";
+    }
+    else {
+        window.location.href = "page0.html";
+    }
+}
+
+function blur_out() {
+    get_('total_CGPA').blur()
+}
+
+var swipe_ = document.getElementById('sidenav');
+var blue = document.getElementById('GPA_MU');
+var input = document.getElementById('add_value');
+
+Hammer(get_('touchward')).on('swipeleft', function(){
+    $(swipe_).animate({left: "-100%"}, 200);
+    blue.style.opacity = "1";
+    input.style.pointerEvents = "unset";
+});
+
+Hammer(get_('nav_')).on('swipeleft', function(){
+    $(swipe_).animate({left: "-100%"}, 200);
+    blue.style.opacity = "1";
+    input.style.pointerEvents = "unset";
+})
+
+Hammer(get_('sidenav')).on('swipeleft', function(){
+    $(swipe_).animate({left: "-100%"}, 200);
+    blue.style.opacity = "1";
+    input.style.pointerEvents = "unset";
+})
+
+Hammer(get_('GPA_MU')).on("swiperight", function(e) {
+    var endPoint = e.pointers[0].pageX;
+    var distance = e.distance;
+    var origin = endPoint - distance;
+    if (origin <= 30) {
+        $(swipe_).animate({left: "0"}, 200);
+        blue.style.opacity = "0.1";
+        blur_out();
+        input.style.pointerEvents = "none";
+    }
+});
+
+get_('sidenav').addEventListener('click', function(e){
+    if (e.target == get_('sidenav')){
+        $(swipe_).animate({left: "-100%"}, 200);
+        blue.style.opacity = "1";
+        input.style.pointerEvents = "unset";
+    }
+});
+
+function open_nav() {
+    $(swipe_).animate({left: "0"});
+    blue.style.opacity = "0.1";
+    blur_out();
+    input.style.pointerEvents = "none";
+}
+
+function set_grade(final_cgpa){
+    var data_ = Number(final_cgpa);
+    if (data_ == 10){
+        return "Outstanding (O)";
+    }
+    else if ((data_ > 0) && (data_ < 4)){
+        return "Fail (F)";
+    }
+    else if ((data_ >= 4) && (data_ < 5)){
+        return "Pass (P)";
+    }
+    else if ((data_ >= 5) && (data_ < 6)){
+        return "Average (E)";
+    }
+    else if ((data_ >= 6) && (data_ < 7)){
+        return "Fair (D)";
+    }
+    else if ((data_ >= 7) && (data_ < 8)){
+        return "Good (C)";
+    }
+    else if ((data_ >= 8) && (data_ < 9)){
+        return "Very Good (B)";
+    }
+    else if ((data_ >= 9) && (data_ < 10)){
+        return "Excellent (A)";
+    }
+}
+
+function submit_total_CGPA(){
+    if (get_('total_CGPA').value != ''){
+        get_('try_again_GPA').style.display = "inline-block";
+        var GPA = (((get_('total_CGPA').value)/10)*4);
+        get_('GPA_status').innerHTML = parseFloat(GPA).toFixed(2)+"/4";
+        get_('Grade_status').innerHTML = set_grade(get_('total_CGPA').value);
+    }
+    if (get_('total_CGPA').value == ''){
+        get_('GPA_status').innerHTML = "-";
+        get_('Grade_status').innerHTML = "-";
+        get_('try_again_GPA').style.display = "none";
+    }
+}
+
+function enter_key(e) {
+    if (e.key == 'Enter') {
+        submit_total_CGPA();
+    }
+}
+
+function verify_data(id_) {
+    var data_ = get_(id_).value;
+    if (data_ > 10) {
+        var new_value = data_/10;
+        get_(id_).value = new_value;
+    }
+    if (data_ == 0) {
+        get_(id_).value = "";
+    }
+    submit_total_CGPA();
+}
+
+function pointer_out(id_) {
+    var data_ = get_(id_).value;
+    console.log(id_ + "=" + data_);
+}
+</script>
+</body>
+</html>

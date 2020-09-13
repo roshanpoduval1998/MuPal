@@ -1,0 +1,35 @@
+<!Doctype>
+<html>
+<head>
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" type="text/css" href="./css/loader.css">
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="./js/admob_simple.js"></script>
+    <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        document.addEventListener("backbutton", onBackKeyDown, false);
+        StatusBar.backgroundColorByHexString('#53538a');
+    }
+    function onBackKeyDown() {
+        navigator.app.exitApp();
+    }
+    </script>
+</head>
+<body style="font-family: segoe ui" onload="setTimeout(load_,500)">
+    <div align="center" id="start_interface">
+        <div class="main_header"><br>
+            <img src="./img/mdpi.png" alt="logo"><br>
+            <a>MuPal</a><br>
+        </div><br>
+        <button id="loader" class="roller"></button>
+    </div><br>
+    <div align="center" class="loading">
+        <a>Loading..</a>
+    </div>
+    <script>
+    function load_() {
+        window.location.href = "page0.html";
+    }
+    </script>
+</body>

@@ -1,0 +1,243 @@
+<!Doctype>
+<html>
+<head>
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" type="text/css" href="./css/page1_style.css">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="./js/hammer.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="./js/admob_simple.js"></script>
+</head>
+<body style="font-family: segoe ui">
+    <div align="center" tagName="CGPA" id="CGPA_MU">
+        <div class="main_header"><br>
+            <button style="text-decoration: none; font-size: 6vw" class="tab_bar" id="tab_bar" onclick="open_nav()">&#9776;</button>
+            <button style="margin-left:-40px;color: white; font-size: 5vw; background-color: transparent; outline:none; border: none">SGPI - CGPI</button><br><br>
+        </div><br>
+        <div id="inward" class="inward">
+            <div class="Status">
+                <div>
+                    <a><b>Avg. CGPI</b><br></a>
+                    <span id="CGPI_status">-</span>
+                </div>
+                <div>
+                    <a><b>Percentage</b><br></a>
+                    <span id="Percentage_status">-</span>
+                </div>
+                <div>
+                    <a><b>Grade</b><br></a>
+                    <span id="Grade_status">-</span>
+                </div>
+            </div>
+            <div class="add_value" id="add_value">
+                <input type="number" class="CGPA" id="sem1" placeholder="Sem 1" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)">
+                <input type="number" class="CGPA" id="sem2" placeholder="Sem 2" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" ><br>
+                <input type="number" class="CGPA" id="sem3" placeholder="Sem 3" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" >
+                <input type="number" class="CGPA" id="sem4" placeholder="Sem 4" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" ><br>
+                <input type="number" class="CGPA" id="sem5" placeholder="Sem 5" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" >
+                <input type="number" class="CGPA" id="sem6" placeholder="Sem 6" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" ><br>
+                <input type="number" class="CGPA" id="sem7" placeholder="Sem 7" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" >
+                <input type="number" class="CGPA" id="sem8" placeholder="Sem 8" onfocusout="pointer_out(this.id)" oninput="verify_data(this.id)" ><br>
+            </div>
+            <div align="center" style="display: inline-flex;">
+                <a style="text-decoration: none;" class="try_again" id="try_again" href="page1.html" hidden>&#x21bb;</a><br><br>
+            </div><br><br>
+        </div>
+    </div>
+    <div class="sidenav" id="sidenav">
+        <div align="center" id="touchward">
+            <div class="nav_header" style="box-shadow: 0 0 5px black;">
+                <img src="./img/mdpi.png" alt="logo" style="width: 60px;height:60px;"><br>
+                <span style="font-size: 4vw;color:white">MUPal</span>
+            </div>
+            <div id="nav_" style="margin-top: 4vh;overflow: auto">
+                <a href="page0.html">Home</a><br>
+                <a style="background-color: gray;color: white" href="page1.html">SGPI to CGPI</a><br>
+                <a href="page2.html">CGPI to GPA</a><br>
+                <a href="page3.html">CGPI to %</a><br>
+                <a onclick="exit()">Exit</a><br>
+            </div>
+        </div>
+        <div class="footerfeed">
+            <button onclick="window.location.href = 'page4.html'"><img style="width: 6vw;height: 3vh" src="./img/info.png"><br><br>Disclaimers</button>
+            <button onclick="window.location.href = 'https://play.google.com/store/apps/details?id=com.mupal.app'"><img style="width: 6vw;height: 3vh" src="./img/star.png"><br><br>Rate</button>
+            <button onclick="window.location.href = 'mailto:frankobase98@gmail.com?subject=Feedback&body='"><img style="width: 6vw;height: 3vh" src="./img/feedback.png"><br><br>Feedback</button>
+        </div>
+    </div>
+<script>
+
+function exit() {
+    navigator.app.exitApp();
+}
+
+function get_(id_) {return document.getElementById(id_);}
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    StatusBar.backgroundColorByHexString('#53538a');
+    document.addEventListener("backbutton", onBackKeyDown, false);
+}
+function onBackKeyDown() 
+{
+    var data = document.getElementById('sidenav').offsetLeft;
+    if (data == '0') {
+        $(swipe_).animate({left: "-100%"}, 300);
+        blue.style.opacity = "1";
+    }
+    else {
+        window.location.href = "page0.html";
+    }
+}
+
+function blur_out() {
+    get_('sem1').blur();get_('sem2').blur();get_('sem3').blur();get_('sem4').blur();
+    get_('sem5').blur();get_('sem6').blur();get_('sem7').blur();get_('sem8').blur();
+}
+
+var swipe_ = document.getElementById('sidenav');
+var blue = document.getElementById('CGPA_MU');
+var input = document.getElementById('add_value');
+
+Hammer(get_('touchward')).on('swipeleft', function(){
+    $(swipe_).animate({left: "-100%"}, 200);
+    blue.style.opacity = "1";
+    input.style.pointerEvents = "unset";
+});
+
+Hammer(get_('nav_')).on('swipeleft', function(){
+    $(swipe_).animate({left: "-100%"}, 200);
+    blue.style.opacity = "1";
+    input.style.pointerEvents = "unset";
+})
+
+Hammer(get_('sidenav')).on('swipeleft', function(){
+    $(swipe_).animate({left: "-100%"}, 200);
+    blue.style.opacity = "1";
+    input.style.pointerEvents = "unset";
+})
+
+Hammer(get_('CGPA_MU')).on("swiperight", function(e) {
+    var endPoint = e.pointers[0].pageX;
+    var distance = e.distance;
+    var origin = endPoint - distance;
+    if (origin <= 30) {
+        $(swipe_).animate({left: "0"}, 200);
+        blue.style.opacity = "0.1";
+        blur_out();
+        input.style.pointerEvents = "none";
+    }
+});
+
+get_('sidenav').addEventListener('click', function(e){
+    if (e.target == get_('sidenav')){
+        $(swipe_).animate({left: "-100%"}, 200);
+        blue.style.opacity = "1";
+        input.style.pointerEvents = "unset";
+    }
+});
+
+function open_nav() {
+    $(swipe_).animate({left: "0"});
+    blue.style.opacity = "0.1";
+    blur_out();
+    input.style.pointerEvents = "none";
+}
+
+function set_grade(final_cgpa,active_inputs){
+    var data_ = Number(final_cgpa)/active_inputs;
+    if (data_ == 10){
+        return "Outstanding (O)";
+    }
+    else if ((data_ > 0) && (data_ < 4)){
+        return "Fail (F)";
+    }
+    else if ((data_ >= 4) && (data_ < 5)){
+        return "Pass (P)";
+    }
+    else if ((data_ >= 5) && (data_ < 6)){
+        return "Average (E)";
+    }
+    else if ((data_ >= 6) && (data_ < 7)){
+        return "Fair (D)";
+    }
+    else if ((data_ >= 7) && (data_ < 8)){
+        return "Good (C)";
+    }
+    else if ((data_ >= 8) && (data_ < 9)){
+        return "Very Good (B)";
+    }
+    else if ((data_ >= 9) && (data_ < 10)){
+        return "Excellent (A)";
+    }
+}
+
+function submit() {
+    var sem1 = get_('sem1').value;var sem2 = get_('sem2').value;
+    var sem3 = get_('sem3').value;var sem4 = get_('sem4').value;
+    var sem5 = get_('sem5').value;var sem6 = get_('sem6').value;
+    var sem7 = get_('sem7').value;var sem8 = get_('sem8').value;
+    var final_cgpa = Number(sem1) + Number(sem2) + Number(sem3) + Number(sem4) + Number(sem5) + Number(sem6) + Number(sem7) + Number(sem8);
+    var final_cgpa_string = toString(sem1) + toString(sem2) + toString(sem3) + toString(sem4) + toString(sem5) + toString(sem6) + toString(sem7) + toString(sem8);
+    if (Number(final_cgpa) != 0) 
+    {
+        get_('try_again').style.display = "block";
+        var data = $('.CGPA').filter(function(){
+            return !$(this).val();
+        }).length;
+        var active_inputs = 8 - data;
+        if (Number(final_cgpa/active_inputs) < 6.75)
+        {
+            get_('CGPI_status').innerHTML = parseFloat(final_cgpa/active_inputs).toFixed(2) + "/10";
+            get_('Percentage_status').innerHTML = Math.round((((final_cgpa)/active_inputs) * 7.1) + 12) + "%";
+            get_('Grade_status').innerHTML = set_grade(final_cgpa,active_inputs);
+        }
+        else
+        {
+            get_('CGPI_status').innerHTML = parseFloat(final_cgpa/active_inputs).toFixed(2) + "/10";
+            get_('Percentage_status').innerHTML = Math.round((((final_cgpa)/active_inputs) * 7.4) + 12) + "%";
+            get_('Grade_status').innerHTML = set_grade(final_cgpa,active_inputs);
+        }
+    }
+    if ((sem1 == '')&&(sem2 == '')&&(sem3 == '')&&(sem4 == '')&&(sem5 == '')&&(sem6 == '')&&(sem7 == '')&&(sem8 == '')){
+        console.log("null");
+        get_('CGPI_status').innerHTML = "-";
+        get_('Percentage_status').innerHTML = "-";
+        get_('Grade_status').innerHTML = "-";
+    }
+}
+
+window.onkeypress = function(e) {
+    if (e.key == "Enter") {
+        e.preventDefault();
+        var inputs = document.getElementsByClassName('CGPA');
+        for (var i = 0; i < inputs.length; i++) {
+            if (document.activeElement.id == inputs[i].id && i+1 < inputs.length ) {
+                inputs[i+1].focus();
+                break;   
+            }
+        }
+    }
+}
+
+function verify_data(id_) {
+    var data_ = get_(id_).value;
+    if (data_ > 10) {
+        var new_value = data_/10;
+        get_(id_).value = new_value;
+    }
+    if (data_ == 0) {
+        get_(id_).value = "";
+        console.log("null");
+    }    
+    submit();
+}
+
+function pointer_out(id_) {
+    var data_ = get_(id_).value;
+    console.log(id_ + "=" + data_);
+}
+
+</script>
+</body>
+</html>

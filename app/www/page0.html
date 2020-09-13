@@ -1,0 +1,43 @@
+<!Doctype>
+<html>
+<head>
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" type="text/css" href="./css/page0_style.css">
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/admob_simple.js"></script>
+    <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        StatusBar.backgroundColorByHexString('#53538a');
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+    function onBackKeyDown() 
+    {
+        navigator.app.exitApp();
+    }
+    </script>
+</head>
+<body style="font-family: segoe ui">
+    <div align="center" id="main_interface" class="main_interface" style="overflow: auto;">
+        <div class="main_header"><br>
+            <img src="./img/mdpi.png" alt="logo"><br>
+            <a>MuPal</a><br>
+        </div><br>
+        <div class="option">
+            <span style="color: gray;font-size: 4vw;" id="status">Mumbai University CGPI Calculator</span><br><br><br>
+            <button class="calc_per" id="calc_per" onclick='window.location.href="page1.html"' >SGPI to CGPI</button><br>
+            <button class="calc_per" id="calc_per" onclick='window.location.href="page2.html"' >CGPI to GPA</button><br>
+            <button class="calc_per" id="calc_per" onclick='window.location.href="page3.html"' >CGPI to %</button><br>
+        </div>
+    </div>
+    <div class="footermain" id="footermain">
+        <button onclick="window.location.href = 'page4.html'"><img style="width: 6vw;height: 3vh" src="./img/info.png"><br><br>Disclaimers</button>
+        <button onclick="window.location.href = 'https://play.google.com/store/apps/details?id=com.mupal.app'"><img style="width: 6vw;height: 3vh" src="./img/star.png"><br><br>Rate</button>
+        <button onclick="window.location.href = 'mailto:frankobase98@gmail.com?subject=Feedback&body='"><img style="width: 6vw;height: 3vh" src="./img/feedback.png"><br><br>Feedback</button>
+    </div>
+<script>
+    function get_(id_) {return document.getElementById(id_);}
+</script>
+</body>
+</html>
